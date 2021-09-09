@@ -20,8 +20,7 @@
     "test:ci": "npm run test -- --ci",
     "test:watch": "nodemon --ext ts --exec 'npm test'",
     "test:watch:name": "nodemon --ext ts --exec 'npm test -- --testNamePattern $T'",
-    "build": "tsc --build tsconfig-browser.json && npm run buildSchema && npm run bundle",
-    "buildSchema": "tsc && node lib/buildSchema.js",
+    "build": "tsc --build tsconfig-browser.json && npm run bundle",
     "bundle": "rollup -c rollup.config.js"
   },
   "dependencies": {
@@ -33,6 +32,7 @@
   "devDependencies": {
     "@rollup/plugin-alias": "^3.1.5",
     "@rollup/plugin-commonjs": "^20.0.0",
+    "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.0.4",
     "@types/jest": "^27.0.1",
     "@types/mocha": "^9.0.0",

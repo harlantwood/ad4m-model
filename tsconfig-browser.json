@@ -1,12 +1,15 @@
 {
   "include": ["./src/**/*.ts"],
-  "exclude": ["./src/buildSchema.ts", "./src/**/*.test.ts"],
+  "exclude": [
+    "./src/**/*.test.ts",
+    "./src/Ad4m.ts",
+    "./src/buildSchema.ts",
+    "./src/jestSetup.ts"
+  ],
   "compilerOptions": {
     "baseUrl": ".",
-    "paths": {
-      "type-graphql": ["./shims/type-graphql.ts"],
-      "reflect-metadata": ["./shims/reflect-metadata.ts"]
-    },
+    // "paths": {
+    // },
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
 
     /* Basic Options */
