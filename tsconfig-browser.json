@@ -1,11 +1,11 @@
 {
   "include": ["./src/**/*.ts"],
-  "exclude": ["./src/buildSchema.ts", "./src/**.test.ts"],
+  "exclude": ["./src/buildSchema.ts", "./src/**/*.test.ts"],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "type-graphql": ["./src/shims/type-graphql.ts"],
-      "reflect-metadata": ["./src/shims/reflect-metadata.ts"]
+      "type-graphql": ["./shims/type-graphql.ts"],
+      "reflect-metadata": ["./shims/reflect-metadata.ts"]
     },
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
 
