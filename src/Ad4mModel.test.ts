@@ -87,9 +87,9 @@ describe("Ad4mModel", () => {
 
   describe('with "has many" association', () => {
     it("scratchpad", async () => {
+      class FundingEvent extends Ad4mModel {}
       class Funder extends Ad4mModel {}
       Funder.hasMany("FundingEvent");
-      class FundingEvent extends Ad4mModel {}
 
       const musk: any = await Funder.create({ name: "Musk" });
       const muskExpression = await client.expression.get(
