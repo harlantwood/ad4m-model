@@ -1,17 +1,30 @@
-import { Ad4mClient, Link, LinkQuery, Perspective } from "@perspect3vism/ad4m";
+import {
+  Ad4mClient,
+  Language,
+  Link,
+  LinkQuery,
+  Perspective,
+} from "@perspect3vism/ad4m";
 import { ApolloClient, ApolloLink, InMemoryCache } from "@apollo/client";
 import { WebSocketLink } from "@apollo/client/link/ws";
 import ws from "ws";
 
+interface Languages {
+  [key: string]: Language;
+}
+
 export class Ad4m {
-  static client;
-  static defaultExpressionLanguage;
-  static languages: object;
-  static perspective;
+  static client: any;
+  static defaultExpressionLanguage: any;
+  static languages: Languages;
+  static perspective: any;
 
   static async init({
     perspectiveName,
     defaultExpressionLanguage,
+  }: {
+    perspectiveName: string;
+    defaultExpressionLanguage: string;
   }): Promise<void> {
     this.initClient();
     await this.loginOrCreateDid();
@@ -68,8 +81,10 @@ export class Ad4m {
   private static async setLanguages() {
     const languages = await this.client.languages.all();
     this.languages = {};
+
     for (const language of languages) {
-      this.languages[language.name] = language;
+      const name: string = language.name as string;
+      this.languages[name] = language;
     }
   }
 
