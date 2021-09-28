@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-set -exuo pipefail
-
-# TODO cd to this dir
-
-tsc --build tsconfig-browser.json
-./bin/bundle

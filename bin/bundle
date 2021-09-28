@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-set -exuo pipefail
-
-rollup -c rollup.config.js

@@ -7,12 +7,18 @@
     "email": "code@harlantwood.net"
   },
   "contributors": [],
-  "main": "lib/index.js",
+  "type": "module",
+  "source": "src/index.ts",
+  "exports": "./dist/Ad4mModel.modern.js",
+  "main": "./dist/Ad4mModel.cjs",
+  "module": "./dist/Ad4mModel.module.js",
+  "unpkg": "./dist/Ad4mModel.umd.js",
   "types": "lib/src/index.d.ts",
   "scripts": {
     "ad4m-executor": "ad4m serve",
-    "dev": "ts-node index.ts",
-    "dev2": "ts-node spike-social-context.ts",
+    "dev": "microbundle watch",
+    "dev:old2": "ts-node index.ts",
+    "dev:old": "ts-node spike-social-context.ts",
     "dev:full": "npm run ad4m-executor && npm run dev",
     "clean": "rm -rf ~/Library/Application\\ Support/ad4m",
     "sort": "sort-package-json",
@@ -20,9 +26,7 @@
     "test:ci": "npm run test -- --ci",
     "test:watch": "nodemon --ext ts --exec 'npm test'",
     "test:watch:name": "nodemon --ext ts --exec 'npm test -- --testNamePattern $T'",
-    "build": "rm -rf lib && ./bin/build",
-    "bundle": "./bin/bundle",
-    "postinstall": "[ -f lib/index.js ] || ./bin/build"
+    "build": "microbundle"
   },
   "dependencies": {
     "@apollo/client": "3.3.20",
@@ -37,6 +41,7 @@
     "@types/jest": "^27.0.1",
     "@types/mocha": "^9.0.0",
     "jest": "^27.1.0",
+    "microbundle": "^0.13.3",
     "nodemon": "^2.0.12",
     "rollup": "^2.56.3",
     "sort-package-json": "^1.50.0",
