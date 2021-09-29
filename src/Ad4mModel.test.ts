@@ -2,7 +2,7 @@ import { Ad4mModel } from "./Ad4mModel";
 import { Ad4m } from "./Ad4m";
 
 describe("Ad4mModel", () => {
-  let client;
+  let client: any;
 
   beforeAll(async () => {
     await Ad4m.init({
@@ -60,8 +60,8 @@ describe("Ad4mModel", () => {
       const cat1address = (await Cat.create({})).expressionAddress;
       const cat2address = (await Cat.create({})).expressionAddress;
 
-      const dogs = (await Dog.all()).map((dog) => dog.expressionAddress);
-      const cats = (await Cat.all()).map((cat) => cat.expressionAddress);
+      const dogs = (await Dog.all()).map((dog: Dog) => dog.expressionAddress);
+      const cats = (await Cat.all()).map((cat: Cat) => cat.expressionAddress);
 
       expect(dogs).toEqual(expect.arrayContaining([dog1address, dog2address]));
       expect(cats).toEqual(expect.arrayContaining([cat1address, cat2address]));

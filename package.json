@@ -7,12 +7,16 @@
     "email": "code@harlantwood.net"
   },
   "contributors": [],
-  "main": "lib/index.js",
-  "types": "lib/src/index.d.ts",
+  "type": "module",
+  "exports": "./dist/Ad4mModel.modern.js",
+  "main": "./dist/Ad4mModel.cjs",
+  "unpkg": "./dist/Ad4mModel.umd.js",
+  "module": "./dist/Ad4mModel.module.js",
+  "source": "src/index.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
     "ad4m-executor": "ad4m serve",
-    "dev": "ts-node index.ts",
-    "dev2": "ts-node spike-social-context.ts",
+    "dev": "microbundle watch",
     "dev:full": "npm run ad4m-executor && npm run dev",
     "clean": "rm -rf ~/Library/Application\\ Support/ad4m",
     "sort": "sort-package-json",
@@ -20,30 +24,23 @@
     "test:ci": "npm run test -- --ci",
     "test:watch": "nodemon --ext ts --exec 'npm test'",
     "test:watch:name": "nodemon --ext ts --exec 'npm test -- --testNamePattern $T'",
-    "build": "rm -rf lib && ./bin/build",
-    "bundle": "./bin/bundle",
-    "postinstall": "[ -f lib/index.js ] || ./bin/build"
+    "build": "microbundle"
   },
   "dependencies": {
     "@apollo/client": "3.3.20",
     "@perspect3vism/ad4m": "^0.1.7",
-    "lodash": "^4.17.21",
     "subscriptions-transport-ws": "^0.9.19"
   },
   "devDependencies": {
-    "@rollup/plugin-alias": "^3.1.5",
-    "@rollup/plugin-commonjs": "^20.0.0",
-    "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^13.0.4",
     "@types/jest": "^27.0.1",
     "@types/mocha": "^9.0.0",
     "jest": "^27.1.0",
+    "microbundle": "^0.13.3",
     "nodemon": "^2.0.12",
-    "rollup": "^2.56.3",
     "sort-package-json": "^1.50.0",
     "ts-jest": "^27.0.5",
     "ts-node": "^10.2.1",
     "type-graphql": "^1.1.1",
-    "typescript": "^4.4.2"
+    "typescript": "^4.4.3"
   }
 }

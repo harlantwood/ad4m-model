@@ -1,5 +1,4 @@
 import { Link, LinkQuery, PerspectiveHandle } from "@perspect3vism/ad4m";
-import { map } from "lodash";
 
 const PREDICATE_HAS_INSTANCE = "HAS_INSTANCE";
 const PREDICATE_HAS_ASSOCIATED = "HAS_ASSOCIATED";
@@ -8,15 +7,15 @@ const TYPE_MODEL_CLASS = "MODEL_CLASS";
 const TYPE_MODEL_INSTANCE = "MODEL_INSTANCE";
 
 export class Ad4mModel {
-  static client;
+  static client: any;
   private client;
-  static defaultPerspective;
-  static defaultExpressionLanguage;
+  static defaultPerspective: any;
+  static defaultExpressionLanguage: any;
 
   protected static hasManyAssociations: any = {};
 
   private static classExpressionAddress: string;
-  expressionAddress: string;
+  expressionAddress: string | null = null;
 
   protected constructor() {
     // TODO assert client present
@@ -138,15 +137,15 @@ export class Ad4mModel {
       })
     );
 
-    const instanceAddresses = map(links, (link) => link.data.target);
-    const instances = map(instanceAddresses, (instanceAddress) =>
+    const instanceAddresses = links.map((link: any) => link.data.target);
+    const instances = instanceAddresses.map((instanceAddress: string) =>
       modelClass.fromExpressionAddress(instanceAddress)
     );
 
     return instances;
   }
 
-  static async find(address) {
+  static async find(address: string) {
     return await this.client.expression.get(address);
   }
 
@@ -166,8 +165,8 @@ export class Ad4mModel {
       })
     );
 
-    const instanceAddresses = map(links, (link) => link.data.target);
-    const instances = map(instanceAddresses, (instanceAddress) =>
+    const instanceAddresses = links.map((link: any) => link.data.target);
+    const instances = instanceAddresses.map((instanceAddress: string) =>
       modelClass.fromExpressionAddress(instanceAddress)
     );
 
